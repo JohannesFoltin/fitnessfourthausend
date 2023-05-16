@@ -13,14 +13,33 @@ class ExerciseData {
   String pictureAsset;
   String notes;
   String unit;
-  String typ;
-  int maximum;
+  String type;
 
-  ExerciseData(this.name, this.description, this.pictureAsset, this.typ,
-      this.notes, this.unit,this.maximum);
+  ExerciseData({this.name = "", this.description = "", this.pictureAsset = "",
+      this.notes = "", this.unit = "",this.type = ""});
 
   factory ExerciseData.fromJson(Map<String, dynamic> json) =>
       _$ExerciseDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExerciseDataToJson(this);
+
+    ExerciseData copyWith(
+      {
+        String? name,
+        String? description,
+        String? pictureAsset,
+        String? notes,
+        String? unit,
+        String? type,
+      }
+    ){
+      return ExerciseData(
+        name: name ?? this.name,
+        description:  description ?? this.description,
+        pictureAsset: pictureAsset ?? this.pictureAsset,
+        notes: notes ?? this.notes,
+        unit: unit ?? this.unit,
+        type: type ?? this.type,
+      );
+    }
 }

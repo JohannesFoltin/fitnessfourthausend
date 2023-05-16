@@ -7,15 +7,17 @@ part of 'exercise.dart';
 // **************************************************************************
 
 Exercise _$ExerciseFromJson(Map<String, dynamic> json) => Exercise(
-      ExerciseData.fromJson(json['uebung'] as Map<String, dynamic>),
-      (json['sets'] as List<dynamic>)
-          .map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['isChecked'] as bool,
+      exerciseData:
+          ExerciseData.fromJson(json['exerciseData'] as Map<String, dynamic>),
+      sets: (json['sets'] as List<dynamic>?)
+              ?.map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      isChecked: json['isChecked'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{
-      'uebung': instance.uebung,
+      'exerciseData': instance.exerciseData,
       'sets': instance.sets,
       'isChecked': instance.isChecked,
     };

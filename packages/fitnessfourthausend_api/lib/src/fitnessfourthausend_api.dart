@@ -11,7 +11,8 @@ abstract class FitnessfourthausendApi {
 
   Future<void> saveTraining(Training training);
 
-  Future<void> deleteTraining();
-
+  Future<void> deleteTraining(int id);
 
 }
+
+class TrainingNotFoundException implements Exception {}

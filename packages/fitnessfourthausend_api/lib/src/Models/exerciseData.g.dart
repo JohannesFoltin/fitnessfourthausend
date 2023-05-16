@@ -7,13 +7,12 @@ part of 'exerciseData.dart';
 // **************************************************************************
 
 ExerciseData _$ExerciseDataFromJson(Map<String, dynamic> json) => ExerciseData(
-      json['name'] as String,
-      json['description'] as String,
-      json['pictureAsset'] as String,
-      json['typ'] as String,
-      json['notes'] as String,
-      json['unit'] as String,
-      json['maximum'] as int,
+      name: json['name'] as String? ?? "",
+      description: json['description'] as String? ?? "",
+      pictureAsset: json['pictureAsset'] as String? ?? "",
+      notes: json['notes'] as String? ?? "",
+      unit: json['unit'] as String? ?? "",
+      type: json['type'] as String? ?? "",
     );
 
 Map<String, dynamic> _$ExerciseDataToJson(ExerciseData instance) =>
@@ -23,6 +22,5 @@ Map<String, dynamic> _$ExerciseDataToJson(ExerciseData instance) =>
       'pictureAsset': instance.pictureAsset,
       'notes': instance.notes,
       'unit': instance.unit,
-      'typ': instance.typ,
-      'maximum': instance.maximum,
+      'type': instance.type,
     };
