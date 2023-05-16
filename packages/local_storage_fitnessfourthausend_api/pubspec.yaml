@@ -8,8 +8,13 @@ environment:
   flutter: 3.7.0
 
 dependencies:
+  fitnessfourthausend_api:
+    path: ../fitnessfourthausend_api
   flutter:
     sdk: flutter
+  meta: ^1.7.0
+  rxdart: ^0.27.5
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
