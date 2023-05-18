@@ -4,7 +4,7 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   bloc: ^8.1.1
@@ -14,6 +14,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
+  local_storage_fitnessfourthausend_api:
+    path: packages/local_storage_fitnessfourthausend_api
+  fitnessfourthausend_api:
+    path: packages/fitnessfourthausend_api
+  fitnessfourthausend_repository:
+    path: packages/fitnessfourthausend_repository
 
 dev_dependencies:
   bloc_test: ^9.1.1
