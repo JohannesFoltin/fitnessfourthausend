@@ -1,21 +1,20 @@
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:fitnessfourthausend/l10n/l10n.dart';
+import 'package:fitnessfourthausend/trainingEditor/view/trainingEditorView.dart';
 import 'package:fitnessfourthausend_repository/fitnessfourthausend_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:fitnessfourthausend/counter/counter.dart';
-import 'package:fitnessfourthausend/l10n/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:local_storage_fitnessfourthausend_api/local_storage_fitnessfourthausend_api.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
-
-  todosApi = LocalStorageFitnessfourthausendApi(
-    plugin: await SharedPreferences.getInstance(),
-  );
+  const App({required this.fitnessfourthausendRepository, super.key});
+  
+  final FitnessfourthausendRepository fitnessfourthausendRepository;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => FitnessfourthausendRepository(Shared),
+    return RepositoryProvider.value(
+      value: fitnessfourthausendRepository,
       child: MaterialApp(
         theme: ThemeData(
           appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
@@ -25,7 +24,7 @@ class App extends StatelessWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const CounterPage(),
+        home: const TrainingEditorView(),
       ),
     );
   }

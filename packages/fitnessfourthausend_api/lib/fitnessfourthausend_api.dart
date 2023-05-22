@@ -2,7 +2,7 @@
 library fitnessfourthausend_api;
 
 export 'src/fitnessfourthausend_api.dart';
-export 'src/Models/exercise.dart';
-export 'src/Models/training.dart';
-export 'src/Models/exerciseSet.dart';
-export 'src/Models/exerciseData.dart';
+export 'src/Models/training.dart' show Training;
+export 'src/Models/exerciseData.dart' show ExerciseData;
+export 'src/Models/exerciseSet.dart' show ExerciseSet;
+export 'src/Models/exercise.dart' show Exercise;

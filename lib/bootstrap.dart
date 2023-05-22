@@ -2,7 +2,11 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
+import 'package:fitnessfourthausend_repository/fitnessfourthausend_repository.dart';
 import 'package:flutter/widgets.dart';
+
+import 'app/app.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -20,15 +24,17 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+void bootstrap({required FitnessfourthausendApi trainingsApi}) {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = const AppBlocObserver();
 
-  await runZonedGuarded(
-    () async => runApp(await builder()),
+  final trainingsRepository = FitnessfourthausendRepository(api: trainingsApi);
+
+  runZonedGuarded(
+    () => runApp(App(fitnessfourthausendRepository: trainingsRepository)),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
