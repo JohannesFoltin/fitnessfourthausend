@@ -11,12 +11,12 @@ part 'training.g.dart';
 class Training {
   final String id;
   final int duration;
-  final DateTime date;
+  final DateTime? date;
   final List<Exercise> exercises;
 
-  Training({
+  Training( {
     this.duration = 0,
-    required this.date,
+    this.date,
     this.exercises = const [],
     String? id,
   })  : assert(
@@ -25,9 +25,13 @@ class Training {
         ),
         id = id ?? const Uuid().v4();
 
-  /// Returns a copy of this `Training` with the given values updated.
-  ///
-  /// {@macro todo_item}
+
+
+  factory Training.fromJson(Map<String, dynamic> json) =>
+      _$TrainingFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TrainingToJson(this);
+
   Training copyWith({
     String? id,
     int? duration,
@@ -41,9 +45,4 @@ class Training {
       exercises: exercises ?? this.exercises,
     );
   }
-
-  factory Training.fromJson(Map<String, dynamic> json) =>
-      _$TrainingFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TrainingToJson(this);
 }

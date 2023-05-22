@@ -4,10 +4,10 @@ import 'package:fitnessfourthausend_api/training_api.dart';
 /// A repository that handles Training related requests.
 /// {@endtemplate}
 
-class FitnessfourthausendRepository {
+class TrainingsRepository {
   /// {@macro fitnessfourthausend_repository}
 
-  const FitnessfourthausendRepository({required TrainingsApi api})
+  const TrainingsRepository({required TrainingsApi api})
    : _trainingApi = api;
 
   final TrainingsApi _trainingApi;

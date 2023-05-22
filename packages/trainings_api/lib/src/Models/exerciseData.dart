@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
 
 /// This allows the `User` class to access private members in
 /// the generated file. The value for this is *.g.dart, where
@@ -7,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'exerciseData.g.dart';
 
 @JsonSerializable()
-class ExerciseData {
+class ExerciseData extends Equatable {
   String name;
   String description;
   String pictureAsset;
@@ -15,31 +16,38 @@ class ExerciseData {
   String unit;
   String type;
 
-  ExerciseData({this.name = "", this.description = "", this.pictureAsset = "",
-      this.notes = "", this.unit = "",this.type = ""});
+  ExerciseData(
+      {this.name = "",
+      this.description = "",
+      this.pictureAsset = "",
+      this.notes = "",
+      this.unit = "",
+      this.type = ""});
 
   factory ExerciseData.fromJson(Map<String, dynamic> json) =>
       _$ExerciseDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExerciseDataToJson(this);
 
-    ExerciseData copyWith(
-      {
-        String? name,
-        String? description,
-        String? pictureAsset,
-        String? notes,
-        String? unit,
-        String? type,
-      }
-    ){
-      return ExerciseData(
-        name: name ?? this.name,
-        description:  description ?? this.description,
-        pictureAsset: pictureAsset ?? this.pictureAsset,
-        notes: notes ?? this.notes,
-        unit: unit ?? this.unit,
-        type: type ?? this.type,
-      );
-    }
+  ExerciseData copyWith({
+    String? name,
+    String? description,
+    String? pictureAsset,
+    String? notes,
+    String? unit,
+    String? type,
+  }) {
+    return ExerciseData(
+      name: name ?? this.name,
+      description: description ?? this.description,
+      pictureAsset: pictureAsset ?? this.pictureAsset,
+      notes: notes ?? this.notes,
+      unit: unit ?? this.unit,
+      type: type ?? this.type,
+    );
+  }
+
+  @override
+  List<Object> get props =>
+      [name, description, pictureAsset, notes, unit, type];
 }

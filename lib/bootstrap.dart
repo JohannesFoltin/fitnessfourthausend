@@ -31,7 +31,7 @@ void bootstrap({required TrainingsApi trainingsApi}) {
 
   Bloc.observer = const AppBlocObserver();
 
-  final trainingsRepository = FitnessfourthausendRepository(api: trainingsApi);
+  final trainingsRepository = TrainingsRepository(api: trainingsApi);
 
   runZonedGuarded(
     () => runApp(App(fitnessfourthausendRepository: trainingsRepository)),

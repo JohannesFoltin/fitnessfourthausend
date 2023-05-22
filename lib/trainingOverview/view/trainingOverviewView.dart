@@ -10,7 +10,7 @@ class TrainingOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          TrainingOverviewBloc(context.read<FitnessfourthausendRepository>())
+          TrainingOverviewBloc(context.read<TrainingsRepository>())
             ..add(TrainingOverviewSubscriptionRequested()),
       child: const TrainingOverviewView(),
     );

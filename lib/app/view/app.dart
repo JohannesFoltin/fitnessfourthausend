@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class App extends StatelessWidget {
   const App({required this.fitnessfourthausendRepository, super.key});
   
-  final FitnessfourthausendRepository fitnessfourthausendRepository;
+  final TrainingsRepository fitnessfourthausendRepository;
 
   @override
   Widget build(BuildContext context) {

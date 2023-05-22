@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'exercise.g.dart';
 
 @JsonSerializable()
-class Exercise {
+class Exercise extends Equatable{
   ExerciseData exerciseData;
   List<ExerciseSet> sets;
   bool isChecked;
@@ -13,6 +14,8 @@ class Exercise {
 
     factory Exercise.fromJson(Map<String, dynamic> json) =>
       _$ExerciseFromJson(json);
+
+
 
   Map<String, dynamic> toJson() => _$ExerciseToJson(this);
 
@@ -29,4 +32,6 @@ class Exercise {
       isChecked: isChecked ?? this.isChecked,
     );
   }
+  @override
+  List<Object> get props => [exerciseData];
 }

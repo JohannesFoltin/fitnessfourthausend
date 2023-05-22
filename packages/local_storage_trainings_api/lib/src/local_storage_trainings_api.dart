@@ -21,7 +21,7 @@ class LocalStorageFitnessfourthausendApi extends TrainingsApi {
 
   final SharedPreferences _plugin;
 
-  final _trainingStreamController =
+  final _trainingsStreamController =
       BehaviorSubject<List<Training>>.seeded(const []);
 
   static const _kTrainingsCollectionKey = '__trainings_collection_key__';
@@ -40,9 +40,9 @@ class LocalStorageFitnessfourthausendApi extends TrainingsApi {
           .map((jsonMap) =>
               Training.fromJson(Map<String, dynamic>.from(jsonMap)))
           .toList();
-      _trainingStreamController.add(todos);
+      _trainingsStreamController.add(todos);
     } else {
-      _trainingStreamController.add(const []);
+      _trainingsStreamController.add(const []);
     }
   }
 
@@ -53,11 +53,11 @@ class LocalStorageFitnessfourthausendApi extends TrainingsApi {
   }
 
   @override
-  Stream<List<Training>> getTraings() => _trainingStreamController.asBroadcastStream();
+  Stream<List<Training>> getTraings() => _trainingsStreamController.asBroadcastStream();
 
   @override
   Future<void> saveTraining(Training training) {
-      final trainings = [..._trainingStreamController.value];
+      final trainings = [..._trainingsStreamController.value];
       final trainingIndex = trainings.indexWhere((t) => t.id == training.id);
       if (trainingIndex >= 0) {
         trainings[trainingIndex] = training;
@@ -65,7 +65,7 @@ class LocalStorageFitnessfourthausendApi extends TrainingsApi {
         trainings.add(training);
       }
 
-      _trainingStreamController.add(trainings);
+      _trainingsStreamController.add(trainings);
       return _setValue(_kTrainingsCollectionKey, json.encode(trainings));
 
   }

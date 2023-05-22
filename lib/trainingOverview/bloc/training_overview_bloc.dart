@@ -9,14 +9,14 @@ part 'training_overview_event.dart';
 part 'training_overview_state.dart';
 
 class TrainingOverviewBloc extends Bloc<TrainingOverviewEvent, TrainingOverviewState> {
-  TrainingOverviewBloc(FitnessfourthausendRepository fitnessRepository) :
+  TrainingOverviewBloc(TrainingsRepository fitnessRepository) :
     _fitnessfourthausendRepository = fitnessRepository,
    super(const TrainingOverviewState()) {
    on<AddTraining>(_onAddTraining);
    on<TrainingOverviewSubscriptionRequested>(_onSubscriptionRequested);
   }
 
-  final FitnessfourthausendRepository _fitnessfourthausendRepository;
+  final TrainingsRepository _fitnessfourthausendRepository;
 
 
   Future<void> _onSubscriptionRequested(
