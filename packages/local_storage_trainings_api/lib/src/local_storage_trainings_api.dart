@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
+import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// A Flutter implementation of the TrainingApi that uses local storage.
 /// {@endtemplate}
 ///
-class LocalStorageFitnessfourthausendApi extends FitnessfourthausendApi {
+class LocalStorageFitnessfourthausendApi extends TrainingsApi {
   /// {@macro local_storage_fitnessfourthausend_api}
 
   LocalStorageFitnessfourthausendApi({

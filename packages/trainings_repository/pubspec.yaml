@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   fitnessfourthausend_api:
-    path: ../fitnessfourthausend_api
+    path: ../trainings_api
 
 dev_dependencies:
   mocktail: ^0.3.0

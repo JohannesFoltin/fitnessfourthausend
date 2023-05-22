@@ -1,4 +1,4 @@
-import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
+import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
 

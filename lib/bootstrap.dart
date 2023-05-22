@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
-import 'package:fitnessfourthausend_repository/fitnessfourthausend_repository.dart';
+import 'package:fitnessfourthausend_api/training_api.dart';
+import 'package:fitnessfourthausend_repository/trainings_repository.dart';
 import 'package:flutter/widgets.dart';
 
 import 'app/app.dart';
@@ -24,7 +24,7 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-void bootstrap({required FitnessfourthausendApi trainingsApi}) {
+void bootstrap({required TrainingsApi trainingsApi}) {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };

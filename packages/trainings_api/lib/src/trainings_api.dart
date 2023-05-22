@@ -1,11 +1,11 @@
-import '../fitnessfourthausend_api.dart';
+import '../training_api.dart';
 
 /// {@template fitnessfourthausend_api}
 /// The interface and models for an API providing access to todos.
 /// {@endtemplate}
-abstract class FitnessfourthausendApi {
+abstract class TrainingsApi {
   /// {@macro fitnessfourthausend_api}
-  const FitnessfourthausendApi();
+  const TrainingsApi();
 
   Stream<List<Training>> getTraings();
 

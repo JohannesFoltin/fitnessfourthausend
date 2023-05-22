@@ -1,4 +1,4 @@
-import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
+import 'package:fitnessfourthausend_api/training_api.dart';
 
 /// {@template fitnessfourthausend_repository}
 /// A repository that handles Training related requests.
@@ -7,10 +7,10 @@ import 'package:fitnessfourthausend_api/fitnessfourthausend_api.dart';
 class FitnessfourthausendRepository {
   /// {@macro fitnessfourthausend_repository}
 
-  const FitnessfourthausendRepository({required FitnessfourthausendApi api})
+  const FitnessfourthausendRepository({required TrainingsApi api})
    : _trainingApi = api;
 
-  final FitnessfourthausendApi _trainingApi;
+  final TrainingsApi _trainingApi;
 
   Stream<List<Training>> getTraings() => _trainingApi.getTraings();
 

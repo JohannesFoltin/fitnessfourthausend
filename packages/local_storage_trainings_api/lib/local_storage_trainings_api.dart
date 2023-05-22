@@ -4,4 +4,4 @@ library local_storage_fitnessfourthausend_api;
 export 'package:shared_preferences/shared_preferences.dart'
     show SharedPreferences;
     
-export 'src/local_storage_fitnessfourthausend_api.dart';
+export 'src/local_storage_trainings_api.dart';

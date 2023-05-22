@@ -148,14 +148,14 @@ packages:
   fitnessfourthausend_api:
     dependency: "direct main"
     description:
-      path: "packages/fitnessfourthausend_api"
+      path: "packages/trainings_api"
       relative: true
     source: path
     version: "0.1.0+1"
   fitnessfourthausend_repository:
     dependency: "direct main"
     description:
-      path: "packages/fitnessfourthausend_repository"
+      path: "packages/trainings_repository"
       relative: true
     source: path
     version: "0.1.0+1"
@@ -254,7 +254,7 @@ packages:
   local_storage_fitnessfourthausend_api:
     dependency: "direct main"
     description:
-      path: "packages/local_storage_fitnessfourthausend_api"
+      path: "packages/local_storage_trainings_api"
       relative: true
     source: path
     version: "0.1.0+1"

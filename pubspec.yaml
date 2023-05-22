@@ -15,11 +15,11 @@ dependencies:
     sdk: flutter
   intl: ^0.18.0
   local_storage_fitnessfourthausend_api:
-    path: packages/local_storage_fitnessfourthausend_api
+    path: packages/local_storage_trainings_api
   fitnessfourthausend_api:
-    path: packages/fitnessfourthausend_api
+    path: packages/trainings_api
   fitnessfourthausend_repository:
-    path: packages/fitnessfourthausend_repository
+    path: packages/trainings_repository
 
 dev_dependencies:
   bloc_test: ^9.1.1
