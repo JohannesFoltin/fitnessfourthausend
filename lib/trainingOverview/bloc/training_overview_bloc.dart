@@ -1,9 +1,9 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:bloc/bloc.dart';
-import 'package:fitnessfourthausend_api/training_api.dart';
-import 'package:fitnessfourthausend_repository/trainings_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:trainings_api/training_api.dart';
+import 'package:trainings_repository/trainings_repository.dart';
 
 part 'training_overview_event.dart';
 part 'training_overview_state.dart';

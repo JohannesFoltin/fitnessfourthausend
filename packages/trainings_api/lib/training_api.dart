@@ -1,5 +1,5 @@
 /// The interface and models for an API providing access to todos.
-library fitnessfourthausend_api;
+library trainings_api;
 
 export 'src/trainings_api.dart';
 export 'src/Models/training.dart' show Training;

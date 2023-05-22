@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fitnessfourthausend_api/training_api.dart';
+import 'package:trainings_api/training_api.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 

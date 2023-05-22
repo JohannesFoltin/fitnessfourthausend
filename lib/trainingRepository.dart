@@ -1,5 +1,5 @@
-import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:trainings_api/training_api.dart';
 
 class TrainingRepository {
   final _trainingStreamController =
@@ -12,7 +12,5 @@ class TrainingRepository {
       _trainingStreamController.add(training);
 
   void safeExercise(Exercise exercise){
-
-
   }
 }

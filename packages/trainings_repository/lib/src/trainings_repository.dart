@@ -1,4 +1,4 @@
-import 'package:fitnessfourthausend_api/training_api.dart';
+import 'package:trainings_api/training_api.dart';
 
 /// {@template fitnessfourthausend_repository}
 /// A repository that handles Training related requests.

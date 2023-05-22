@@ -2,9 +2,9 @@
 
 import 'dart:convert';
 
-import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trainings_api/training_api.dart';
 
 /// {@template local_storage_fitnessfourthausend_api}
 /// A Flutter implementation of the TrainingApi that uses local storage.

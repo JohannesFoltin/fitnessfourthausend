@@ -1,4 +1,4 @@
-name: local_storage_fitnessfourthausend_api
+name: local_storage_trainings_api
 description: A Flutter implementation of the TodosApi that uses local storage.
 version: 0.1.0+1
 publish_to: none
@@ -8,7 +8,7 @@ environment:
   flutter: 3.7.0
 
 dependencies:
-  fitnessfourthausend_api:
+  trainings_api:
     path: ../trainings_api
   flutter:
     sdk: flutter

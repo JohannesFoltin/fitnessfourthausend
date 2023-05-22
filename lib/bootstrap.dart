@@ -2,9 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:fitnessfourthausend_api/training_api.dart';
-import 'package:fitnessfourthausend_repository/trainings_repository.dart';
+
 import 'package:flutter/widgets.dart';
+import 'package:trainings_api/training_api.dart';
+import 'package:trainings_repository/trainings_repository.dart';
 
 import 'app/app.dart';
 

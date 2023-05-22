@@ -1,4 +1,4 @@
-name: fitnessfourthausend_api
+name: trainings_api
 description: The interface and models for an API providing access to todos.
 version: 0.1.0+1
 publish_to: none

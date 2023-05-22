@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitnessfourthausend/trainingRepository.dart';
-import 'package:fitnessfourthausend_api/training_api.dart';
-import 'package:fitnessfourthausend_repository/trainings_repository.dart';
+
 import 'package:meta/meta.dart';
+import 'package:trainings_api/training_api.dart';
+import 'package:trainings_repository/trainings_repository.dart';
 
 part 'training_editor_state.dart';
 

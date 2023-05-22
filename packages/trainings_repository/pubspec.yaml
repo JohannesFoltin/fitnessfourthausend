@@ -1,4 +1,4 @@
-name: fitnessfourthausend_repository
+name: trainings_repository
 description: A repository that handles todo related requests.
 version: 0.1.0+1
 publish_to: none
@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  fitnessfourthausend_api:
+  trainings_api:
     path: ../trainings_api
 
 dev_dependencies:

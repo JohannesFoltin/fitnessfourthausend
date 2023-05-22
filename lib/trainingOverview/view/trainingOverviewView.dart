@@ -1,7 +1,7 @@
 import 'package:fitnessfourthausend/trainingOverview//bloc/training_overview_bloc.dart';
-import 'package:fitnessfourthausend_repository/trainings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trainings_repository/trainings_repository.dart';
 
 class TrainingOverviewPage extends StatelessWidget {
   const TrainingOverviewPage({super.key});
