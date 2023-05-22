@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 /// This allows the `User` class to access private members in
 /// the generated file. The value for this is *.g.dart, where
@@ -7,6 +8,7 @@ import 'package:equatable/equatable.dart';
 
 part 'exerciseData.g.dart';
 
+@immutable
 @JsonSerializable()
 class ExerciseData extends Equatable {
   String name;

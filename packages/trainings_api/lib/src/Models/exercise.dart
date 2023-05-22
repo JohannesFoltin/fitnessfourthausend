@@ -1,9 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:fitnessfourthausend_api/training_api.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'exercise.g.dart';
 
+@immutable
 @JsonSerializable()
 class Exercise extends Equatable{
   ExerciseData exerciseData;
