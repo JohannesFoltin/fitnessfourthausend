@@ -19,18 +19,15 @@ class TrainingEditorPage extends StatelessWidget {
   //         ),
   //   );
   // }
+
   static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const TrainingEditorPage());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) =>
-          TrainingEditorCubit(
-            context.read<TrainingsRepository>(),
-            context.read<TrainingRepository>(),
-          ),
+    return RepositoryProvider(
+      create: (context) => TrainingRepository(),
       child: const TrainingEditorView(),
     );
   }
@@ -41,27 +38,36 @@ class TrainingEditorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Trainigs Editor'),
+    return BlocProvider(
+      create: (context) => TrainingEditorCubit(
+        context.read<TrainingsRepository>(),
+        context.read<TrainingRepository>(),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BlocBuilder<TrainingEditorCubit, TrainingEditorState>(
-            builder: (context, state) {
-              return Expanded(
-                child: CupertinoScrollbar(
-                  child: ListView(
-                    children: [
-                      for (final exercise in state.training.exercises)
-                        Text(exercise.exerciseData.name)
-                    ],
-                  ),),
-              );
-            },
-          )
-        ],),
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text('Trainigs Editor'),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocBuilder<TrainingEditorCubit, TrainingEditorState>(
+              builder: (context, state) {
+                return Expanded(
+                  child: CupertinoScrollbar(
+                    child: ListView(
+                      children: [
+                        for (final exercise in state.training.exercises)
+                          Text(exercise.exerciseData.name)
+                      ],
+                    ),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }

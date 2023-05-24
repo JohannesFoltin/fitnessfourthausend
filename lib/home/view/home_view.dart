@@ -23,11 +23,14 @@ class HomeView extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Hello World!"),
+          centerTitle: true,
         ),
-        body: ElevatedButton(
-          onPressed: () =>
-              context.read<NavigationBloc>().add(NavigateToTrainingEditor()),
-          child: const Text("Start Training"),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () =>
+                Navigator.of(context).push(TrainingEditorPage.route()),
+            child: const Text("Start Training"),
+          ),
         ));
   }
 }

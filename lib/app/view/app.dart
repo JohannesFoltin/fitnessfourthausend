@@ -1,5 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'package:fitnessfourthausend/home/view/home_view.dart';
 import 'package:fitnessfourthausend/l10n/l10n.dart';
 import 'package:fitnessfourthausend/trainingOverview//view/trainingOverviewView.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class App extends StatelessWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const TrainingOverviewPage(),
+        home: const HomePage(),
       ),
     );
   }
