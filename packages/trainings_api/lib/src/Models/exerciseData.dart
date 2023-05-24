@@ -11,12 +11,12 @@ part 'exerciseData.g.dart';
 @immutable
 @JsonSerializable()
 class ExerciseData extends Equatable {
-  String name;
-  String description;
-  String pictureAsset;
-  String notes;
-  String unit;
-  String type;
+  final String name;
+  final String description;
+  final String pictureAsset;
+  final String notes;
+  final String unit;
+  final String type;
 
   ExerciseData(
       {this.name = "",

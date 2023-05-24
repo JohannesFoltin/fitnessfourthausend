@@ -1,3 +1,4 @@
+import 'package:fitnessfourthausend/trainingEditor/view.dart';
 import 'package:fitnessfourthausend/trainingOverview//bloc/training_overview_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,37 +25,33 @@ class TrainingOverviewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('heollo'),
-      ),
-      body: BlocListener<TrainingOverviewBloc, TrainingOverviewState>(
-        listenWhen: (previous, current) =>
-            previous.trainingEditorStatus != current.trainingEditorStatus,
-        listener: (context, state) {
-          if (state.trainingEditorStatus == TrainingOverviewStatus.failure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                const SnackBar(
-                  content: Text('Fuck'),
-                ),
-              );
-          }
-        },
-        child: Column(
-          children: [
-            BlocBuilder<TrainingOverviewBloc, TrainingOverviewState>(
-              builder: (context, state) =>
-                  Center(child: Text(state.trainings.length.toString())),
-            ),
-            IconButton(
-              onPressed: () =>
-                  context.read<TrainingOverviewBloc>().add(AddTraining()),
-              icon: const Icon(Icons.add),
-            ),
-          ],
-        ),
+    return BlocListener<TrainingOverviewBloc, TrainingOverviewState>(
+      listenWhen: (previous, current) =>
+          previous.trainingEditorStatus != current.trainingEditorStatus,
+      listener: (context, state) {
+        if (state.trainingEditorStatus == TrainingOverviewStatus.failure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(
+                content: Text('Fuck'),
+              ),
+            );
+        }
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BlocBuilder<TrainingOverviewBloc, TrainingOverviewState>(
+            builder: (context, state) =>
+                Center(child: Text(state.trainings.length.toString())),
+          ),
+          IconButton(
+            onPressed: () =>
+                Navigator.of(context).push(TrainingEditorPage.route()),
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }

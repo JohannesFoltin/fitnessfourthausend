@@ -1,0 +1,1 @@
+export 'view/training_editor_page.dart';

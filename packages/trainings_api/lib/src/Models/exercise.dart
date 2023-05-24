@@ -8,9 +8,9 @@ part 'exercise.g.dart';
 @immutable
 @JsonSerializable()
 class Exercise extends Equatable{
-  ExerciseData exerciseData;
-  List<ExerciseSet> sets;
-  bool isChecked;
+  final ExerciseData exerciseData;
+  final List<ExerciseSet> sets;
+  final bool isChecked;
 
   Exercise({required this.exerciseData, this.sets = const [],this.isChecked = false});
 
