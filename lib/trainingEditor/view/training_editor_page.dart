@@ -1,4 +1,4 @@
-import 'package:fitnessfourthausend/trainingEditor/cubit/training_editor_cubit.dart';
+import 'package:fitnessfourthausend/trainingEditor/bloc/training_editor_bloc.dart';
 import 'package:fitnessfourthausend/trainingRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,34 +39,51 @@ class TrainingEditorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TrainingEditorCubit(
+      create: (context) => TrainingEditorBloc(
         context.read<TrainingsRepository>(),
         context.read<TrainingRepository>(),
+      )..add(const SubscribeToStream()),
+      child: const TrainingEdtiorFinalView(),
+    );
+  }
+}
+
+class TrainingEdtiorFinalView extends StatelessWidget {
+  const TrainingEdtiorFinalView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: const Text('Trainings Editor'),
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text('Trainigs Editor'),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BlocBuilder<TrainingEditorCubit, TrainingEditorState>(
-              builder: (context, state) {
-                return Expanded(
-                  child: CupertinoScrollbar(
-                    child: ListView(
-                      children: [
-                        for (final exercise in state.training.exercises)
-                          Text(exercise.exerciseData.name)
-                      ],
-                    ),
+      body: BlocBuilder<TrainingEditorBloc, TrainingEditorState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Expanded(
+                child: CupertinoScrollbar(
+                  child: ListView(
+                    children: [
+                      for (final exercise in state.training.exercises)
+                        Text(exercise.exerciseData.name)
+                    ],
                   ),
-                );
-              },
-            )
-          ],
-        ),
+                ),
+              ),
+              OutlinedButton(
+                  onPressed: () => context.read<TrainingEditorBloc>().add(
+                      AddExercise(
+                          exercise: Exercise(
+                              exerciseData: ExerciseData(name: "Test")))),
+                  child: const Text("Add Exercise"))
+            ],
+          );
+        },
       ),
     );
   }

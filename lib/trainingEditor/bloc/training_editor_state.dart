@@ -1,8 +1,6 @@
-part of 'training_editor_cubit.dart';
+part of 'training_editor_bloc.dart';
 
-@immutable
-final class TrainingEditorState {
-
+class TrainingEditorState extends Equatable {
   const TrainingEditorState({
     required this.training,
     this.date,
@@ -20,5 +18,7 @@ final class TrainingEditorState {
       date: date ?? this.date,
     );
   }
-}
 
+  @override
+  List<Object?> get props => [training,date];
+}
