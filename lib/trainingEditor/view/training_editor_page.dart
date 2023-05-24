@@ -1,4 +1,5 @@
 import 'package:fitnessfourthausend/trainingEditor/bloc/training_editor_bloc.dart';
+import 'package:fitnessfourthausend/trainingEditor/widgets/timer/timer_view.dart';
 import 'package:fitnessfourthausend/trainingRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,7 @@ class TrainingEdtiorFinalView extends StatelessWidget {
         builder: (context, state) {
           return Column(
             children: [
+              const TimerView(),
               Expanded(
                 child: CupertinoScrollbar(
                   child: ListView(
@@ -83,10 +85,13 @@ class TrainingEdtiorFinalView extends StatelessWidget {
                 children: [
                   OutlinedButton(
                       onPressed: () => context.read<TrainingEditorBloc>().add(
-                          AddExercise(
+                            AddExercise(
                               exercise: Exercise(
-                                  exerciseData: ExerciseData(name: "Test")))),
-                      child: const Text("Add Exercise")),
+                                exerciseData: ExerciseData(name: 'Test'),
+                              ),
+                            ),
+                          ),
+                      child: const Text('Add Exercise')),
                   ElevatedButton(
                       onPressed: () {
                         context
@@ -94,7 +99,7 @@ class TrainingEdtiorFinalView extends StatelessWidget {
                             .add(SubmitTraining());
                         Navigator.pop(context);
                       },
-                      child: Text("SubmitTraining"))
+                      child: const Text('SubmitTraining'),)
                 ],
               )
             ],
