@@ -12,7 +12,7 @@ class Training {
   final String id;
   final int duration;
   final DateTime? date;
-  List<Exercise> exercises;
+  final List<Exercise> exercises;
 
   Training( {
     this.duration = 0,

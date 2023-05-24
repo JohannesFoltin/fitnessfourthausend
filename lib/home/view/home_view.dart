@@ -1,7 +1,9 @@
 import 'package:fitnessfourthausend/app/navigationBloc/navigation_bloc.dart';
 import 'package:fitnessfourthausend/trainingEditor/view.dart';
+import 'package:fitnessfourthausend/trainingOverview/view/trainingOverviewView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -25,12 +27,19 @@ class HomeView extends StatelessWidget {
           title: Text("Hello World!"),
           centerTitle: true,
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () =>
-                Navigator.of(context).push(TrainingEditorPage.route()),
-            child: const Text("Start Training"),
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () =>
+                    Navigator.of(context).push(TrainingOverviewPage.route()),
+                child: Text("Trainings Overview")),
+            ElevatedButton(
+              onPressed: () =>
+                  Navigator.of(context).push(TrainingEditorPage.route()),
+              child: const Text("Start Training"),
+            ),
+          ],
         ));
   }
 }

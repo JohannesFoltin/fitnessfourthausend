@@ -62,6 +62,9 @@ class TrainingEdtiorFinalView extends StatelessWidget {
         title: const Text('Trainings Editor'),
       ),
       body: BlocBuilder<TrainingEditorBloc, TrainingEditorState>(
+        buildWhen: (previous, current) =>
+            previous.training.exercises.length !=
+            current.training.exercises.length,
         builder: (context, state) {
           return Column(
             children: [
@@ -75,12 +78,25 @@ class TrainingEdtiorFinalView extends StatelessWidget {
                   ),
                 ),
               ),
-              OutlinedButton(
-                  onPressed: () => context.read<TrainingEditorBloc>().add(
-                      AddExercise(
-                          exercise: Exercise(
-                              exerciseData: ExerciseData(name: "Test")))),
-                  child: const Text("Add Exercise"))
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  OutlinedButton(
+                      onPressed: () => context.read<TrainingEditorBloc>().add(
+                          AddExercise(
+                              exercise: Exercise(
+                                  exerciseData: ExerciseData(name: "Test")))),
+                      child: const Text("Add Exercise")),
+                  ElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<TrainingEditorBloc>()
+                            .add(SubmitTraining());
+                        Navigator.pop(context);
+                      },
+                      child: Text("SubmitTraining"))
+                ],
+              )
             ],
           );
         },

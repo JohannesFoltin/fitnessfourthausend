@@ -20,3 +20,5 @@ final class AddExercise extends TrainingEditorEvent {
   @override
   List<Object> get props => [exercise];
 }
+
+final class SubmitTraining extends TrainingEditorEvent {}

@@ -7,6 +7,9 @@ import 'package:trainings_repository/trainings_repository.dart';
 class TrainingOverviewPage extends StatelessWidget {
   const TrainingOverviewPage({super.key});
 
+  static Route<void> route() {
+    return MaterialPageRoute<void>(builder: (_) => const TrainingOverviewPage());
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -39,19 +42,21 @@ class TrainingOverviewView extends StatelessWidget {
             );
         }
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BlocBuilder<TrainingOverviewBloc, TrainingOverviewState>(
-            builder: (context, state) =>
-                Center(child: Text(state.trainings.length.toString())),
-          ),
-          IconButton(
-            onPressed: () =>
-                Navigator.of(context).push(TrainingEditorPage.route()),
-            icon: const Icon(Icons.add),
-          ),
-        ],
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocBuilder<TrainingOverviewBloc, TrainingOverviewState>(
+              builder: (context, state) =>
+                  Center(child: Text(state.trainings.length.toString())),
+            ),
+            IconButton(
+              onPressed: () =>
+                  Navigator.of(context).push(TrainingEditorPage.route()),
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
     );
   }

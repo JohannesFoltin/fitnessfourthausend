@@ -21,6 +21,7 @@ class TrainingEditorBloc
         super(TrainingEditorState(training: Training())) {
     on<SubscribeToStream>(_onSubscribeToStream);
     on<AddExercise>(_addExercise);
+    on<SubmitTraining>(_onSubmitTraining);
   }
 
   final TrainingsRepository _repository;
@@ -39,8 +40,16 @@ class TrainingEditorBloc
 
   Future<void> _addExercise(
       AddExercise event, Emitter<TrainingEditorState> emit) async {
-    final lastTraining = _trainingRepository.getLastTraining();
-    _trainingRepository.safeTraining(lastTraining.copyWith(
-        exercises: List.of(lastTraining.exercises)..add(event.exercise)));
+    _trainingRepository.safeTraining(
+      _trainingRepository.getLastTraining().copyWith(
+            exercises: List.of(_trainingRepository.getLastTraining().exercises)
+              ..add(event.exercise),
+          ),
+    );
+  }
+
+  Future<void> _onSubmitTraining(
+      SubmitTraining event, Emitter<TrainingEditorState> emit) async {
+    await _repository.saveTraining(state.training);
   }
 }
