@@ -1,4 +1,5 @@
 import 'package:fitnessfourthausend/trainingEditor/bloc/training_editor_bloc.dart';
+import 'package:fitnessfourthausend/trainingEditor/widgets/exerciseListTile/view.dart';
 import 'package:fitnessfourthausend/trainingEditor/widgets/view.dart';
 import 'package:fitnessfourthausend/trainingRepository.dart';
 import 'package:flutter/cupertino.dart';
@@ -64,8 +65,12 @@ class TrainingEditorFinalView extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Text(context.select((TrainingEditorBloc bloc) =>
-                bloc.state.training.date.toString(),),),
+            Text(
+              context.select(
+                (TrainingEditorBloc bloc) =>
+                    bloc.state.training.date.toString(),
+              ),
+            ),
             const ClockView(),
           ],
         ),
@@ -79,15 +84,14 @@ class TrainingEditorFinalView extends StatelessWidget {
             children: [
               const TimerView(),
               Expanded(
-                child: CupertinoScrollbar(
-                  child: ListView(
-                    children: [
-                      for (final exercise in state.training.exercises)
-                        Text(exercise.exerciseData.name)
-                    ],
-                  ),
-                ),
-              ),
+                  child: CupertinoScrollbar(
+                    child: ListView(
+                      children: [
+                        for(final exercise in state.training.exercises)
+                          ExerciseListTileView(exercise: exercise)
+                      ],
+                    ),
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -108,7 +112,8 @@ class TrainingEditorFinalView extends StatelessWidget {
                     child: const Text('SubmitTraining'),
                   )
                 ],
-              )
+              ),
+
             ],
           );
         },

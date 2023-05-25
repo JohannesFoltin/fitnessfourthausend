@@ -1,0 +1,1 @@
+export 'view/exercise_list_tile_view.dart';

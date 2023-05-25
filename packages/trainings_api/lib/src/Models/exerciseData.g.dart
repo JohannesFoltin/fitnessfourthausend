@@ -13,10 +13,12 @@ ExerciseData _$ExerciseDataFromJson(Map<String, dynamic> json) => ExerciseData(
       notes: json['notes'] as String? ?? "",
       unit: json['unit'] as String? ?? "",
       type: json['type'] as String? ?? "",
+      id: json['id'] as String?,
     );
 
 Map<String, dynamic> _$ExerciseDataToJson(ExerciseData instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'description': instance.description,
       'pictureAsset': instance.pictureAsset,

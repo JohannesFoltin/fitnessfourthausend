@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:uuid/uuid.dart';
 
 /// This allows the `User` class to access private members in
 /// the generated file. The value for this is *.g.dart, where
@@ -11,6 +12,8 @@ part 'exerciseData.g.dart';
 @immutable
 @JsonSerializable()
 class ExerciseData extends Equatable {
+
+  final String id;
   final String name;
   final String description;
   final String pictureAsset;
@@ -24,7 +27,12 @@ class ExerciseData extends Equatable {
       this.pictureAsset = "",
       this.notes = "",
       this.unit = "",
-      this.type = ""});
+      this.type = "",
+      String? id}) : assert(
+        id == null || id.isNotEmpty,
+  'id can not be null and should be empty',
+  ),
+        id = id ?? const Uuid().v4();
 
   factory ExerciseData.fromJson(Map<String, dynamic> json) =>
       _$ExerciseDataFromJson(json);
@@ -32,6 +40,7 @@ class ExerciseData extends Equatable {
   Map<String, dynamic> toJson() => _$ExerciseDataToJson(this);
 
   ExerciseData copyWith({
+    String? ID,
     String? name,
     String? description,
     String? pictureAsset,
@@ -40,6 +49,7 @@ class ExerciseData extends Equatable {
     String? type,
   }) {
     return ExerciseData(
+      id: ID ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
       pictureAsset: pictureAsset ?? this.pictureAsset,
@@ -51,5 +61,5 @@ class ExerciseData extends Equatable {
 
   @override
   List<Object> get props =>
-      [name, description, pictureAsset, notes, unit, type];
+      [id];
 }
