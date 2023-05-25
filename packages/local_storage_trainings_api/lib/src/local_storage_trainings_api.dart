@@ -38,7 +38,7 @@ class LocalStorageFitnessfourthausendApi extends TrainingsApi {
         json.decode(todosJson) as List,
       )
           .map((jsonMap) =>
-              Training.fromJson(Map<String, dynamic>.from(jsonMap)))
+              Training.fromJson(Map<String, dynamic>.from(jsonMap)),)
           .toList();
       _trainingsStreamController.add(todos);
     } else {

@@ -10,9 +10,8 @@ part 'exercise.g.dart';
 class Exercise extends Equatable{
   final ExerciseData exerciseData;
   final List<ExerciseSet> sets;
-  final bool isChecked;
 
-  Exercise({required this.exerciseData, this.sets = const [],this.isChecked = false});
+  Exercise({required this.exerciseData, this.sets = const [],});
 
     factory Exercise.fromJson(Map<String, dynamic> json) =>
       _$ExerciseFromJson(json);
@@ -25,13 +24,11 @@ class Exercise extends Equatable{
     {
       ExerciseData? exerciseData,
       List<ExerciseSet>? sets,
-      bool? isChecked,
     }
   ){
     return Exercise(
       exerciseData: exerciseData ?? this.exerciseData,
       sets: sets ?? this.sets,
-      isChecked: isChecked ?? this.isChecked,
     );
   }
   @override

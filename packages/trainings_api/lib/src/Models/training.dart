@@ -7,6 +7,8 @@ import 'package:uuid/uuid.dart';
 /// the star denotes the source file name.
 part 'training.g.dart';
 
+// flutter pub run build_runner build
+
 @JsonSerializable()
 class Training {
   final String id;

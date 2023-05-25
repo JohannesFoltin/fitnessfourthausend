@@ -14,7 +14,7 @@ class TrainingRepository {
       _trainingStreamController.add(training);
 
   void safeExercise(Exercise exercise) {
-    final exercises = _trainingStreamController.value.exercises;
+    final exercises = [..._trainingStreamController.value.exercises];
     final exerciseIndex =
         exercises.indexWhere((element) => element == exercise);
 
@@ -25,5 +25,10 @@ class TrainingRepository {
     }
     _trainingStreamController
         .add(_trainingStreamController.value.copyWith(exercises: exercises));
+  }
+
+  void changeDuration(int duration) {
+    _trainingStreamController
+        .add(_trainingStreamController.value.copyWith(duration: duration));
   }
 }

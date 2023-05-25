@@ -1,5 +1,5 @@
 import 'package:fitnessfourthausend/trainingEditor/bloc/training_editor_bloc.dart';
-import 'package:fitnessfourthausend/trainingEditor/widgets/timer/timer_view.dart';
+import 'package:fitnessfourthausend/trainingEditor/widgets/view.dart';
 import 'package:fitnessfourthausend/trainingRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +43,16 @@ class TrainingEditorView extends StatelessWidget {
       create: (context) => TrainingEditorBloc(
         context.read<TrainingsRepository>(),
         context.read<TrainingRepository>(),
-      )..add(const SubscribeToStream()),
-      child: const TrainingEdtiorFinalView(),
+      )
+        ..add(const SubscribeToStream())
+        ..add(const SetDate()),
+      child: const TrainingEditorFinalView(),
     );
   }
 }
 
-class TrainingEdtiorFinalView extends StatelessWidget {
-  const TrainingEdtiorFinalView({
+class TrainingEditorFinalView extends StatelessWidget {
+  const TrainingEditorFinalView({
     super.key,
   });
 
@@ -60,7 +62,13 @@ class TrainingEdtiorFinalView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: const Text('Trainings Editor'),
+        title: Row(
+          children: [
+            Text(context.select((TrainingEditorBloc bloc) =>
+                bloc.state.training.date.toString(),),),
+            const ClockView(),
+          ],
+        ),
       ),
       body: BlocBuilder<TrainingEditorBloc, TrainingEditorState>(
         buildWhen: (previous, current) =>
@@ -93,13 +101,12 @@ class TrainingEdtiorFinalView extends StatelessWidget {
                           ),
                       child: const Text('Add Exercise')),
                   ElevatedButton(
-                      onPressed: () {
-                        context
-                            .read<TrainingEditorBloc>()
-                            .add(SubmitTraining());
-                        Navigator.pop(context);
-                      },
-                      child: const Text('SubmitTraining'),)
+                    onPressed: () {
+                      context.read<TrainingEditorBloc>().add(SubmitTraining());
+                      Navigator.pop(context);
+                    },
+                    child: const Text('SubmitTraining'),
+                  )
                 ],
               )
             ],

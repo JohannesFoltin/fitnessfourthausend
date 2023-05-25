@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:fitnessfourthausend/trainingRepository.dart';
 import 'package:trainings_api/training_api.dart';
 import 'package:trainings_repository/trainings_repository.dart';
-
-import '../../trainingRepository.dart';
 
 part 'training_editor_event.dart';
 part 'training_editor_state.dart';
@@ -22,6 +20,7 @@ class TrainingEditorBloc
     on<SubscribeToStream>(_onSubscribeToStream);
     on<AddExercise>(_addExercise);
     on<SubmitTraining>(_onSubmitTraining);
+    on<SetDate>(_onSetDate);
   }
 
   final TrainingsRepository _repository;
@@ -38,14 +37,15 @@ class TrainingEditorBloc
     );
   }
 
+  Future<void> _onSetDate(
+      SetDate event, Emitter<TrainingEditorState> emit,) async {
+    _trainingRepository.safeTraining(
+        _trainingRepository.getLastTraining().copyWith(date: DateTime.now()),);
+  }
+
   Future<void> _addExercise(
       AddExercise event, Emitter<TrainingEditorState> emit) async {
-    _trainingRepository.safeTraining(
-      _trainingRepository.getLastTraining().copyWith(
-            exercises: List.of(_trainingRepository.getLastTraining().exercises)
-              ..add(event.exercise),
-          ),
-    );
+    _trainingRepository.safeExercise(event.exercise);
   }
 
   Future<void> _onSubmitTraining(

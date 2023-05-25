@@ -13,11 +13,9 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) => Exercise(
               ?.map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      isChecked: json['isChecked'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{
       'exerciseData': instance.exerciseData,
       'sets': instance.sets,
-      'isChecked': instance.isChecked,
     };

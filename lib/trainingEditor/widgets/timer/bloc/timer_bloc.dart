@@ -9,7 +9,7 @@ part 'timer_event.dart';
 part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  TimerBloc({required Ticker ticker,required int duration})
+  TimerBloc({required TickerDown ticker,required int duration})
       : _ticker = ticker,
         _duration = duration,
         super(TimerInitial(duration)) {
@@ -20,7 +20,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     on<_TimerTicked>(_onTicked);
   }
 
-  final Ticker _ticker;
+  final TickerDown _ticker;
   final int _duration;
 
   StreamSubscription<int>? _tickerSubscription;

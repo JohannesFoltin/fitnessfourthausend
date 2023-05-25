@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:fitnessfourthausend/trainingEditor/widgets/ticker.dart';
 import 'package:fitnessfourthausend/trainingEditor/widgets/timer/bloc/timer_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TimerView extends StatelessWidget {
@@ -14,23 +13,30 @@ class TimerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TimerBloc(ticker: const Ticker(), duration: 90),
-      child: Column(
+      create: (context) => TimerBloc(ticker: const TickerDown(), duration: 90),
+      child: const Column(
         children: [
+          SizedBox(
+            height: 8,
+          ),
           TimerText(),
+          SizedBox(
+            height: 8,
+          ),
           Actions(),
         ],
       ),
     );
   }
 }
+
 class TimerText extends StatelessWidget {
   const TimerText({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final duration = context.select((TimerBloc bloc) => bloc.state.duration);
     final minutesStr =
-    ((duration / 60) % 60).floor().toString().padLeft(2, '0');
+        ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
     return Text(
       '$minutesStr:$secondsStr',
@@ -38,6 +44,7 @@ class TimerText extends StatelessWidget {
     );
   }
 }
+
 class Actions extends StatelessWidget {
   const Actions({super.key});
 
@@ -50,42 +57,50 @@ class Actions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             if (state is TimerInitial) ...[
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                  ),
+                  onPressed: () => context
+                      .read<TimerBloc>()
+                      .add(TimerStarted(duration: state.duration)),
+                  child: Icon(Icons.play_arrow),
                 ),
-                onPressed: () => context
-                    .read<TimerBloc>()
-                    .add(TimerStarted(duration: state.duration)),
-                child: SizedBox(
-                  height: 32,
-                    child: Icon(Icons.play_arrow)),
               ),
             ],
             if (state is TimerRunInProgress) ...[
-              FloatingActionButton(
-                child: Icon(Icons.pause),
-                onPressed: () => context.read<TimerBloc>().add(TimerPaused()),
-              ),
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
+              Expanded(
+                child: ElevatedButton(
+                  child: Icon(Icons.pause),
+                  onPressed: () =>
+                      context.read<TimerBloc>().add(TimerPaused()),
+                ),
               ),
             ],
             if (state is TimerRunPause) ...[
-              FloatingActionButton(
-                child: Icon(Icons.play_arrow),
-                onPressed: () => context.read<TimerBloc>().add(TimerResumed()),
+              Expanded(
+                child: ElevatedButton(
+                  child: Icon(Icons.replay),
+                  onPressed: () =>
+                      context.read<TimerBloc>().add(TimerReset()),
+                ),
               ),
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
+              Expanded(
+                child: ElevatedButton(
+                  child: Icon(Icons.play_arrow),
+                  onPressed: () =>
+                      context.read<TimerBloc>().add(TimerResumed()),
+                ),
               ),
             ],
             if (state is TimerRunComplete) ...[
-              FloatingActionButton(
-                child: Icon(Icons.replay),
-                onPressed: () => context.read<TimerBloc>().add(TimerReset()),
+              Expanded(
+                child: ElevatedButton(
+                  child: Icon(Icons.replay),
+                  onPressed: () =>
+                      context.read<TimerBloc>().add(TimerReset()),
+                ),
               ),
             ]
           ],

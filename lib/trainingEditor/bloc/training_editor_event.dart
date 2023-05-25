@@ -21,4 +21,8 @@ final class AddExercise extends TrainingEditorEvent {
   List<Object> get props => [exercise];
 }
 
+final class SetDate extends TrainingEditorEvent {
+  const SetDate();
+}
+
 final class SubmitTraining extends TrainingEditorEvent {}
