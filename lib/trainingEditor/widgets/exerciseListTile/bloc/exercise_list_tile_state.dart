@@ -5,7 +5,7 @@ final class ExerciseListTileState extends Equatable {
      this.initialExercise,
     this.sets = const [],
     this.isChecked = false,
-    this.isExpanded = true,
+    this.isExpanded = false,
   });
 
   final Exercise? initialExercise;
