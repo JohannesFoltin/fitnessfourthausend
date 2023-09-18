@@ -24,7 +24,7 @@ final class AddExerciseSet extends ExerciseListTileEvent{
 final class DeleteExerciseSet extends ExerciseListTileEvent{
   const DeleteExerciseSet({required this.exerciseSet});
 
-  final ExerciseSet exerciseSet;
+  final ExerciseSet? exerciseSet;
 
   @override
   List<Object?> get props => [exerciseSet];

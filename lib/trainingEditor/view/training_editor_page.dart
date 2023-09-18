@@ -1,3 +1,4 @@
+import 'package:fitnessfourthausend/setEditor/setEditor_view.dart';
 import 'package:fitnessfourthausend/trainingEditor/bloc/training_editor_bloc.dart';
 import 'package:fitnessfourthausend/trainingEditor/widgets/exerciseListTile/view.dart';
 import 'package:fitnessfourthausend/trainingEditor/widgets/view.dart';
@@ -96,13 +97,15 @@ class TrainingEditorFinalView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   OutlinedButton(
-                      onPressed: () => context.read<TrainingEditorBloc>().add(
+                      onPressed:
+                          /*() => context.read<TrainingEditorBloc>().add(
                             AddExercise(
                               exercise: Exercise(
                                 exerciseData: ExerciseData(name: 'Test'),
                               ),
                             ),
-                          ),
+                          )*/
+                      () => Navigator.of(context).push(SetEditorView.route()),
                       child: const Text('Add Exercise')),
                   ElevatedButton(
                     onPressed: () {

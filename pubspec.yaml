@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.18.0
   local_storage_trainings_api:
     path: packages/local_storage_trainings_api
+  numberpicker: ^2.1.2
   trainings_api:
     path: packages/trainings_api
   trainings_repository:
@@ -26,8 +27,8 @@ dev_dependencies:
   bloc_test: ^9.1.1
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
-  very_good_analysis: ^4.0.0
+  mocktail: ^1.0.0
+  very_good_analysis: ^5.1.0
 
 flutter:
   uses-material-design: true

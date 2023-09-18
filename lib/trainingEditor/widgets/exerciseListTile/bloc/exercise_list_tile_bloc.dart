@@ -40,6 +40,9 @@ class ExerciseListTileBloc
 
   Future<void> _onDeleteExerciseSet(
       DeleteExerciseSet event, Emitter<ExerciseListTileState> emit) async {
+    if(event.exerciseSet == null){
+      return;
+    }
     final sets = [...state.sets];
     final setIndex = sets.indexWhere((element) => element == event.exerciseSet);
     if (setIndex >= 0) {

@@ -37,7 +37,7 @@ class ExerciseListTileView extends StatelessWidget {
                   ),
                   if (state.isExpanded)
                     Container(
-                      height: 64,
+                      height: 156,
                       child: Column(
                         children: [
                           Expanded(
